@@ -1,0 +1,18 @@
+// colors
+$primary-color: #000;
+$secondary-color: #ff0;
+
+// structure
+.page-body {
+	margin-top: 50px;
+	padding-top: 3em;
+}
+
+.page-body {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.page-section {
+	min-height: 500px;
+}

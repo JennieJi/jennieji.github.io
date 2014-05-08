@@ -1,7 +1,4 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* compass styles */
 /* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -65,4 +62,65 @@ a img {
 /* line 116, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
+}
+
+/* libraries */
+/* custom files */
+/* line 6, ../scss/components/_global.scss */
+.page-body {
+  margin-top: 50px;
+  padding-top: 3em;
+}
+
+/* line 11, ../scss/components/_global.scss */
+.page-body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* line 16, ../scss/components/_global.scss */
+.page-section {
+  min-height: 500px;
+}
+
+/* line 1, ../scss/components/_footer.scss */
+footer nav {
+  background: #fff;
+}
+
+/* line 1, ../scss/components/_primary-nav.scss */
+.primary-nav {
+  background: black;
+}
+/* line 4, ../scss/components/_primary-nav.scss */
+.primary-nav .nav {
+  height: 50px;
+}
+/* line 7, ../scss/components/_primary-nav.scss */
+.primary-nav .nav li {
+  margin: -2em 5px 0;
+}
+/* line 12, ../scss/components/_primary-nav.scss */
+.primary-nav .nav a {
+  -webkit-border-radius: 3em;
+  -moz-border-radius: 3em;
+  -ms-border-radius: 3em;
+  -o-border-radius: 3em;
+  border-radius: 3em;
+  -webkit-transition: height 0.5s ease-in-out;
+  -moz-transition: height 0.5s ease-in-out;
+  -o-transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
+  height: 4em;
+  width: 6em;
+  padding: 2.5em 0 0;
+  font-size: 1.1em;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5em;
+}
+/* line 24, ../scss/components/_primary-nav.scss */
+.primary-nav .nav .active > a {
+  height: 6em;
+  background: black;
 }

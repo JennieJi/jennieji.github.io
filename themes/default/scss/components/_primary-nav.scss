@@ -1,0 +1,30 @@
+.primary-nav {
+	background: $primary-color;
+
+	.nav {
+		height: 50px;
+
+		li {
+			margin: -2em 5px 0;
+
+		}
+
+		a{
+			@include border-radius(3em);
+			@include single-transition(height, 0.5s, ease-in-out);
+			height: 4em;
+			width: 6em;
+			padding: 2.5em 0 0;
+			font-size: 1.1em;
+			color: #fff;
+			text-align: center;
+			line-height: 1.5em;
+		}
+
+		.active>a {
+			height: 6em;
+			background: $primary-color;
+		}
+	}
+
+}

@@ -1,11 +1,29 @@
 {
   "name": "jennieji",
   "version": "0.0.1",
+  "author": {
+    "name": "Jennie Ji",
+    "email": "jennie.ji@hotmail.com",
+    "url": "http://github.com/JennieJi"
+  },
+  "private": false,
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
+  "repository": "git://github.com/JennieJi/jennieji.gihub.io.git",
   "devDependencies": {
     "grunt": "latest",
     "grunt-contrib-jshint": "latest",
-    "grunt-sass": "latest",
+    "grunt-contrib-compass": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest"
-  }
+  },
+  "keywords": ["jennie ji","personal"],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://rem.mit-license.org"
+    }
+  ]
 }
