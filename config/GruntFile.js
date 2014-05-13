@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     theme: 'default',
     paths: {
-    	scss: '../themes/<%= theme %>/scss',
+      scss: '../themes/<%= theme %>/scss',
+    	less: '../themes/<%= theme %>/less',
     	css: '../themes/<%= theme %>/css',
       // functionalJs: '../app',
     	themeJs: '../themes/<%= theme %>/js'
@@ -44,19 +45,43 @@ module.exports = function(grunt) {
         }
       }
     },
-    compass: {
-      dist: {                   // Target
+    // compass: {
+    //   dist: {                   // Target
+    //     options: {
+    //       sassDir: '<%= paths.scss %>',
+    //       cssDir: '<%= paths.css %>',
+    //       environment: 'production'
+    //     }
+    //   },
+    //   dev: {                    // Another target
+    //     options: {
+    //       sassDir: '<%= paths.scss %>',
+    //       cssDir: '<%= paths.css %>',
+    //       outputStyle: 'expanded'
+    //     }
+    //   }
+    // },
+    less: {
+      dist: {
         options: {
-          sassDir: '<%= paths.scss %>',
-          cssDir: '<%= paths.css %>',
-          environment: 'production'
+          paths: ['<%= paths.css %>'],
+          cleancss: true,
+          compress: true
+        },
+        files: {
+          '<%= paths.css %>/bootstrap.css': '<%= paths.less %>/bootstrap/bootstrap.less',
+          '<%= paths.css %>/bootstrap-theme.css': '<%= paths.less %>/bootstrap/theme.less',
+          '<%= paths.css %>/app.css': '<%= paths.less %>/app.less'
         }
       },
-      dev: {                    // Another target
+      dev: {
         options: {
-          sassDir: '<%= paths.scss %>',
-          cssDir: '<%= paths.css %>',
-          outputStyle: 'expanded'
+          paths: ['<%= paths.css %>']
+        },
+        files: {
+          '<%= paths.css %>/bootstrap.css': '<%= paths.less %>/bootstrap/bootstrap.less',
+          '<%= paths.css %>/bootstrap-theme.css': '<%= paths.less %>/bootstrap/theme.less',
+          '<%= paths.css %>/app.css': '<%= paths.less %>/app.less'
         }
       }
     },
@@ -66,27 +91,30 @@ module.exports = function(grunt) {
           'GruntFile.js',
 		    	// '<%= paths.functionalJs %>/**/*.js',
 		    	'<%= paths.themeJs %>/**/*.js',
-          '<%= paths.scss %>/**/*.scss'
+          // '<%= paths.scss %>/**/*.scss'
+          '<%= paths.less %>/**/*.less'
 		    ],
-		    tasks: ['uglify:dist', 'compass:dist']
+		    tasks: ['uglify:dist'/*, 'compass:dist'*/,'less:dist']
   		},
   		dev: {
   			files: [
           // '<%= paths.functionalJs %>/**/*.js',
           '<%= paths.themeJs %>/**/*.js',
-          '<%= paths.scss %>/**/*.scss'
+          // '<%= paths.scss %>/**/*.scss'
+          '<%= paths.less %>/**/*.less'
         ],
-        tasks: ['uglify:dev', 'compass:dev']
+        tasks: ['uglify:dev'/*, 'compass:dev'*/,'less:dev']
   		}
   	}
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  // grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify:dev', 'compass:dev', 'watch:dev']);
-  grunt.registerTask('product', ['uglify:dist', 'compass:dist', 'watch:dist']);
+  grunt.registerTask('default', ['uglify:dev'/*, 'compass:dev'*/, 'less:dev', 'watch:dev']);
+  grunt.registerTask('product', ['uglify:dist'/*, 'compass:dist'*/, 'less:dist', 'watch:dist']);
 
 };

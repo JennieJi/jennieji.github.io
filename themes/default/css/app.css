@@ -1,0 +1,44 @@
+.page-body {
+  margin-top: 50px;
+  padding-top: 3em;
+}
+.page-body {
+  height: 100%;
+  overflow-y: auto;
+}
+.page-section {
+  min-height: 500px;
+}
+footer nav {
+  background: #fff;
+}
+.primary-nav {
+  background: #428bca;
+}
+.primary-nav .nav {
+  height: 50px;
+}
+.primary-nav .nav li {
+  margin: -2em 5px 0;
+}
+.primary-nav .nav a {
+  border-radius: 3em;
+  -moz-border-radius: 3em;
+  -webkit-transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
+  height: 4em;
+  width: 6em;
+  padding: 2.5em 0 0;
+  font-size: 1.1em;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5em;
+}
+.primary-nav .nav a:hover {
+  color: #eeeeee;
+  background: transparent;
+}
+.primary-nav .nav .active > a {
+  height: 6em;
+  background: #428bca;
+}

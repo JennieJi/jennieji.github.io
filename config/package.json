@@ -17,7 +17,8 @@
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-compass": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest"
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-less": "latest"
   },
   "keywords": ["jennie ji","personal"],
   "licenses": [

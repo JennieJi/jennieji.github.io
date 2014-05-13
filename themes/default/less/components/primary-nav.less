@@ -1,5 +1,5 @@
 .primary-nav {
-	background: $primary-color;
+	background: @brand-primary;
 
 	.nav {
 		height: 50px;
@@ -10,8 +10,8 @@
 		}
 
 		a{
-			@include border-radius(3em);
-			@include single-transition(height, 0.5s, ease-in-out);
+			.border-radius(3em);
+			.transition(height 0.5s ease-in-out);
 			height: 4em;
 			width: 6em;
 			padding: 2.5em 0 0;
@@ -19,11 +19,16 @@
 			color: #fff;
 			text-align: center;
 			line-height: 1.5em;
+
+			&:hover {
+				color: @gray-lighter;
+				background: transparent;
+			}
 		}
 
 		.active>a {
 			height: 6em;
-			background: $primary-color;
+			background: @brand-primary;
 		}
 	}
 
