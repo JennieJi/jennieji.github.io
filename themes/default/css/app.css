@@ -42,3 +42,64 @@ footer nav {
   height: 6em;
   background: #428bca;
 }
+.blocklist {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 0;
+}
+.blocklist-item {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .blocklist-item {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media (min-width: 992px) {
+  .blocklist-item {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .blocklist-item:nth-child(3n+1) {
+    clear: left;
+  }
+}
+@media (min-width: 992px) {
+  .blocklist-item:nth-child(4n+1) {
+    clear: left;
+  }
+}
+.blocklist-image {
+  text-align: center;
+}
+.blocklist-image img {
+  width: auto !important;
+  height: 200px !important;
+}
+.blocklist .has-hover-state {
+  padding: 0.6em 15px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  background: #eeeeee;
+}
+.blocklist .has-hover-state .hover-state {
+  -webkit-transition: bottom 100ms ease-out;
+  transition: bottom 100ms ease-out;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 100%;
+  background: #999999;
+}
+.blocklist .has-hover-state:hover .hover-state {
+  bottom: 0;
+}
