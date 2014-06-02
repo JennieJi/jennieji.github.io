@@ -1,27 +1,58 @@
 .page-body {
-  margin-top: 50px;
-  padding-top: 3em;
+  padding-top: 8em;
 }
 .page-body {
-  height: 100%;
   overflow-y: auto;
 }
 .page-section {
-  min-height: 500px;
+  margin-bottom: 30px;
 }
-footer nav {
-  background: #fff;
+/* Social Icons */
+.sns-icon-linkedin {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -9999em;
+  overflow: hidden;
+  background: transparent url("../img/social-icons.png") scroll no-repeat 0 0;
 }
-.primary-nav {
+.sns-icon-flickr {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -9999em;
+  overflow: hidden;
+  background: transparent url("../img/social-icons.png") scroll no-repeat -16px 0;
+}
+.sns-icon-twitter {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -9999em;
+  overflow: hidden;
+  background: transparent url("../img/social-icons.png") scroll no-repeat -32px 0;
+}
+.primary-nav-wrapper {
   background: #428bca;
 }
-.primary-nav .nav {
+.primary-nav-wrapper .navbar-brand {
+  color: #fff;
+}
+.primary-nav-wrapper .sns-links a {
+  opacity: 0.7;
+  color: #fff;
+}
+.primary-nav-wrapper .sns-links a:hover {
+  opacity: 1;
+  background-color: transparent;
+}
+.primary-nav {
   height: 50px;
 }
-.primary-nav .nav li {
+.primary-nav li {
   margin: -2em 5px 0;
 }
-.primary-nav .nav a {
+.primary-nav a {
   border-radius: 3em;
   -moz-border-radius: 3em;
   -webkit-transition: height 0.5s ease-in-out;
@@ -34,72 +65,11 @@ footer nav {
   text-align: center;
   line-height: 1.5em;
 }
-.primary-nav .nav a:hover {
+.primary-nav a:hover {
   color: #eeeeee;
   background: transparent;
 }
-.primary-nav .nav .active > a {
+.primary-nav .active > a {
   height: 6em;
   background: #428bca;
-}
-.blocklist {
-  margin-left: -15px;
-  margin-right: -15px;
-  padding: 0;
-}
-.blocklist-item {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .blocklist-item {
-    float: left;
-    width: 33.33333333%;
-  }
-}
-@media (min-width: 992px) {
-  .blocklist-item {
-    float: left;
-    width: 25%;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .blocklist-item:nth-child(3n+1) {
-    clear: left;
-  }
-}
-@media (min-width: 992px) {
-  .blocklist-item:nth-child(4n+1) {
-    clear: left;
-  }
-}
-.blocklist-image {
-  text-align: center;
-}
-.blocklist-image img {
-  width: auto !important;
-  height: 200px !important;
-}
-.blocklist .has-hover-state {
-  padding: 0.6em 15px;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  background: #eeeeee;
-}
-.blocklist .has-hover-state .hover-state {
-  -webkit-transition: bottom 100ms ease-out;
-  transition: bottom 100ms ease-out;
-  overflow: hidden;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 100%;
-  background: #999999;
-}
-.blocklist .has-hover-state:hover .hover-state {
-  bottom: 0;
 }
