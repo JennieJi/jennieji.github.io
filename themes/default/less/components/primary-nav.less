@@ -4,16 +4,6 @@
 	.navbar-brand {
 		color: #fff;
 	}
-
-	.sns-links a {
-		opacity: 0.7;
-		color: #fff;
-
-		&:hover {
-			opacity: 1;
-			background-color: transparent;
-		}
-	}
 }
 
 .primary-nav {
@@ -43,5 +33,25 @@
 	.active>a {
 		height: 6em;
 		background: @brand-primary;
+	}
+}
+
+.primary-nav-wrapper .sns-links {
+	@media (max-width: @screen-sm-max) {
+		text-align: center;
+
+		li {
+			display: inline-block;
+		}
+	}
+
+	a {
+		opacity: 0.7;
+		color: #fff;
+
+		&:hover {
+			opacity: 1;
+			background-color: transparent;
+		}
 	}
 }
