@@ -1,6 +1,7 @@
 {
-  "name": "jennieji",
-  "version": "0.0.1",
+  "name": "jennieji.github.io",
+  "description": "Jennie Ji's github page",
+  "version": "0.0.2",
   "author": {
     "name": "Jennie Ji",
     "email": "jennie.ji@hotmail.com",
@@ -15,10 +16,10 @@
   "devDependencies": {
     "grunt": "latest",
     "grunt-contrib-jshint": "latest",
-    "grunt-contrib-compass": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-less": "latest"
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-concat": "latest"
   },
   "keywords": ["jennie ji","personal"],
   "licenses": [
