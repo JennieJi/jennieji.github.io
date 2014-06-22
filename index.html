@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html lang="en" ng-app>
+<html lang="en" ng-app="mySite">
 <head>
 	<!-- Meta start -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +30,17 @@
 						<li><a href="#about" title="">About</a></li>
 						<li><a href="#contact" title="">Contact</a></li>
 				    </ul> -->
-				    <ul class="nav navbar-nav navbar-right sns-links">
-				        <li><a target="_blank" href="http://cn.linkedin.com/in/jennieji/" title="Linkedin"><span class="sns-icon-linkedin">Linkedin</span></a></li>
-				        <li><a target="_blank" href="https://www.flickr.com/photos/jennieji/" title="Flickr"><span class="sns-icon-flickr">Flickr</span></a></li>
-				        <li><a target="_blank" href="https://twitter.com/jyee721" title="Twitter"><span class="sns-icon-twitter">Twitter</span></a></li>
-				        <li><a href="mailto:jennie.ji@hotmail.com" title="Email"><span class="glyphicon glyphicon-envelope"></span></a></li>
+				    <ul class="nav navbar-nav navbar-right sns-links" ng-controller="controllerSns">
+				    	<li ng-repeat="snsItem in sns">
+				    		<a target="_blank" href="{{snsItem.url}}" title="{{snsItem.altText}}">
+				    			<span class="sns-icon-{{snsItem.name}}">{{snsItem.altText}}</span>
+				    		</a>
+				    	</li>
+				        <li>
+				        	<a href="mailto:jennie.ji@hotmail.com" title="Email">
+				        		<span class="glyphicon glyphicon-envelope"></span>
+				        	</a>
+				        </li>
 				    </ul>
 				</div>
 			</div>
@@ -43,84 +49,18 @@
 
 	<!-- <div class="page-body" data-spy="scroll" data-target=".primary-nav-collapse" data-offset="0"> -->
 	<div class="page-body">
-		<section id="works" class="page-section">
-			<div class="container">
-				<h3>jQuery Plugins</h3>
+		<section id="works" class="page-section" ng-controller="controllerWork">
+			<div class="container" ng-repeat="workGroup in works">
+				<h3>{{workGroup.groupTitle}}</h3>
 				<ul class="list-group repository-list">
-				    <li class="row list-group-item">
+				    <li class="row list-group-item" ng-repeat="work in workGroup.groupItems">
 				    	<div class="col-sm-4 repository-name">
-				    		<h2>bannerRotator</h2>
+				    		<h2>{{work.subject}}</h2>
 				    	</div>
 				    	<div class="col-sm-8 repository-description">
-				    		<p>A simple banner rotator created long time ago.</p>
+				    		<p>{{work.description}}</p>
 				    		<div class="btn-group">
-				    			<a class="btn btn-default" title="demo of bannerRotator" href="http://jennieji.github.io/jquery-bannerRotator" target="_blank">Demo</a>
-				    			<a class="btn btn-default" title="source code of bannerRotator" href="https://github.com/JennieJi/jquery-bannerRotator" target="_blank">Source Code</a>
-				    		</div>
-				    	</div>
-				    </li>
-				    <li class="row list-group-item">
-				    	<div class="col-sm-4 repository-name">
-				    		<h2>imgSlideInput</h2>
-				    	</div>
-				    	<div class="col-sm-8 repository-description">
-				    		<p>An image slider binding with input. This can be used in some special forms.</p>
-				    		<div class="btn-group">
-				    			<a class="btn btn-default" title="demo of imgSlideInput" href="http://jennieji.github.io/jquery-imgSlideInput" target="_blank">Demo</a>
-				    			<a class="btn btn-default" title="source code of imgSlideInput" href="https://github.com/JennieJi/jquery-imgSlideInput" target="_blank">Source Code</a>
-				    		</div>
-				    	</div>
-				    </li>
-				    <li class="row list-group-item">
-				    	<div class="col-sm-4 repository-name">
-				    		<h2>niceSelect</h2>
-				    	</div>
-				    	<div class="col-sm-8 repository-description">
-				    		<p>Customize the select by jQuery.</p>
-				    		<div class="btn-group">
-				    			<a class="btn btn-default" title="demo of niceSelect" href="http://jennieji.github.io/jquery-niceSelect" target="_blank">Demo</a>
-				    			<a class="btn btn-default" title="source code of niceSelect" href="https://github.com/JennieJi/jquery-niceSelect" target="_blank">Source Code</a>
-				    		</div>
-				    	</div>
-				    </li>
-				</ul>
-				<h3>Tools</h3>
-				<ul class="list-group repository-list">
-				    <li class="row list-group-item">
-				    	<div class="col-sm-4 repository-name">
-				    		<h2>subIPv6</h2>
-				    	</div>
-				    	<div class="col-sm-8 repository-description">
-				    		<p>IPv6 subnet range calculator</p>
-				    		<div class="btn-group">
-				    			<a class="btn btn-default" title="demo of subipv6" href="http://jennieji.github.io/subipv6" target="_blank">Try it!</a>
-				    			<a class="btn btn-default" title="source code of subipv6" href="https://github.com/JennieJi/subipv6" target="_blank">Source Code</a>
-				    		</div>
-				    	</div>
-				    </li>
-				</ul>
-				<h3>Demos</h3>
-				<ul class="list-group repository-list">
-				    <li class="row list-group-item">
-				    	<div class="col-sm-4 repository-name">
-				    		<h2>jigsaw</h2>
-				    	</div>
-				    	<div class="col-sm-8 repository-description">
-				    		<p>A simple way to create a jigsaw using jQuery UI.</p>
-				    		<div class="btn-group">
-				    			<a class="btn btn-default" title="demo of jigsaw" href="http://jennieji.github.io/jquery-jigsaw" target="_blank">Demo</a>
-				    			<a class="btn btn-default" title="source code of jigsaw" href="https://github.com/JennieJi/jquery-jigsaw" target="_blank">Source Code</a>
-				    		</div>
-				    	</div>
-				    </li>
-				    <li class="row list-group-item">
-				    	<div class="col-sm-4 repository-name">
-				    		<h2>node-todo-demo</h2>
-				    	</div>
-				    	<div class="col-sm-8 repository-description">
-				    		<p>A very simple MVC todo demo created by Node.js ( express + ejs + mongoose ).</p>
-				    		<div class="btn-group">
-				    			<a class="btn btn-default" title="source code of node-todo-demo" href="https://github.com/JennieJi/node-todo-demo" target="_blank">Source Code</a>
+				    			<a class="btn btn-default" ng-repeat="link in work.links" title="{{link.altText}}" href="{{link.url}}" target="_blank">{{link.text}}</a>
 				    		</div>
 				    	</div>
 				    </li>

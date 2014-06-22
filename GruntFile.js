@@ -30,12 +30,12 @@ module.exports = function(grunt) {
     concat: {
       dev: {
         options: {
-          banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+          banner: '/*!\n * <%= pkg.name %> combined client side JS\n * @licence <%= pkg.name %> - v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)\n * http://jennieji.github.io | Licence: MIT\n */\n'
         },
         src: [
-          '<%= paths.bower %>/angular/angular.min.js',
+          '<%= paths.bower %>/angular/angular.js',
           '<%= paths.bower %>/jquery/jquery.min.js',
-          '<%= paths.js %>/*/*.js'
+          '<%= paths.js %>/*/**/*.js'
         ],
         dest: '<%= paths.js %>/app.js'
       }
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     uglify: {
       prod: {
         options: {
-          banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+          banner: '/*!\n * <%= pkg.name %> compressed client side JS\n * @licence <%= pkg.name %> - v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)\n * http://jennieji.github.io | Licence: MIT\n */\n'
         },
         files: {
         	'<%= paths.js %>/app.min.js': '<%= concat.dev.dest %>'
