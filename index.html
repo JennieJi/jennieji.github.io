@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html lang="en" ng-app="mySite">
+<html lang="en">
 <head>
 	<!-- Meta start -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div class="page-wrapper">
+<div class="page-wrapper" ng-app="mySite">
 
 	<header>
 		<nav class="navbar navbar-fixed-top primary-nav-wrapper" role="navigation">
@@ -33,7 +33,7 @@
 				    <ul class="nav navbar-nav navbar-right sns-links" ng-controller="controllerSns">
 				    	<li ng-repeat="snsItem in sns">
 				    		<a target="_blank" href="{{snsItem.url}}" title="{{snsItem.altText}}">
-				    			<span class="sns-icon-{{snsItem.name}}">{{snsItem.altText}}</span>
+				    			<span class="sns-icon-{{snsItem.name}}" ng-bind="snsItem.altText"></span>
 				    		</a>
 				    	</li>
 				        <li>
@@ -51,16 +51,16 @@
 	<div class="page-body">
 		<section id="works" class="page-section" ng-controller="controllerWork">
 			<div class="container" ng-repeat="workGroup in works">
-				<h3>{{workGroup.groupTitle}}</h3>
+				<h3 ng-bind="workGroup.groupTitle">Data loading...</h3>
 				<ul class="list-group repository-list">
 				    <li class="row list-group-item" ng-repeat="work in workGroup.groupItems">
 				    	<div class="col-sm-4 repository-name">
-				    		<h2>{{work.subject}}</h2>
+				    		<h2 ng-bind="work.subject"></h2>
 				    	</div>
 				    	<div class="col-sm-8 repository-description">
-				    		<p>{{work.description}}</p>
+				    		<p ng-bind="work.description"></p>
 				    		<div class="btn-group">
-				    			<a class="btn btn-default" ng-repeat="link in work.links" title="{{link.altText}}" href="{{link.url}}" target="_blank">{{link.text}}</a>
+				    			<a class="btn btn-default" ng-repeat="link in work.links" title="{{link.altText}}" href="{{link.url}}" target="_blank" ng-bind="link.text"></a>
 				    		</div>
 				    	</div>
 				    </li>
