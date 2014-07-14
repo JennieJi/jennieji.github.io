@@ -32,8 +32,8 @@
 				    </ul> -->
 				    <ul class="nav navbar-nav navbar-right sns-links" ng-controller="controllerSns">
 				    	<li ng-repeat="snsItem in sns">
-				    		<a target="_blank" href="{{snsItem.url}}" title="{{snsItem.altText}}">
-				    			<span class="sns-icon-{{snsItem.name}}" ng-bind="snsItem.altText"></span>
+				    		<a target="_blank" ng-href="{{snsItem.url}}" title="{{snsItem.altText}}">
+				    			<span ng-class="sns-icon-{{snsItem.name}}" ng-bind="snsItem.altText"></span>
 				    		</a>
 				    	</li>
 				        <li>
@@ -50,20 +50,29 @@
 	<!-- <div class="page-body" data-spy="scroll" data-target=".primary-nav-collapse" data-offset="0"> -->
 	<div class="page-body">
 		<section id="works" class="page-section" ng-controller="controllerWork">
-			<div class="container" ng-repeat="workGroup in works">
-				<h3 ng-bind="workGroup.groupTitle">Data loading...</h3>
-				<ul class="list-group repository-list">
-				    <li class="row list-group-item" ng-repeat="work in workGroup.groupItems">
-				    	<div class="col-sm-4 repository-name">
-				    		<h2 ng-bind="work.subject"></h2>
-				    	</div>
-				    	<div class="col-sm-8 repository-description">
-				    		<p ng-bind="work.description"></p>
-				    		<div class="btn-group">
-				    			<a class="btn btn-default" ng-repeat="link in work.links" title="{{link.altText}}" href="{{link.url}}" target="_blank" ng-bind="link.text"></a>
-				    		</div>
-				    	</div>
-				    </li>
+			<div class="container">
+			<!-- TODO: Search the project by keynames
+				<div class="search-works">
+					<input type="search" name="workKeyword" placeholder="Enter your keyword...">
+				</div>
+			-->
+				<ul>
+				    <li ng-repeat="workGroup in works">
+						<h3 ng-bind="workGroup.groupTitle">Data loading...</h3>
+						<ul class="list-group repository-list">
+						    <li class="row list-group-item" ng-repeat="work in workGroup.groupItems">
+						    	<div class="col-sm-4 repository-name">
+						    		<h2 ng-bind="work.subject"></h2>
+						    	</div>
+						    	<div class="col-sm-8 repository-description">
+						    		<p ng-bind="work.description"></p>
+						    		<div class="btn-group">
+						    			<a class="btn btn-default" ng-repeat="link in work.links" title="{{link.altText}}" ng-href="{{link.url}}" target="_blank" ng-bind="link.text"></a>
+						    		</div>
+						    	</div>
+						    </li>
+						</ul>
+					</li> 
 				</ul>
 			</div>
 		</section>
