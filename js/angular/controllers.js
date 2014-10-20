@@ -5,6 +5,25 @@ var mySiteModule = angular.module('mySite', []);
  */
 mySiteModule.controller('controllerWork', function($scope) { 
 	$scope.works = [{
+		"groupTitle": "Angular Directives",
+		"groupItems": [
+			{
+				"subject": "angular-checkgroup",
+				"description": "Custom radio button & checkbox directive extensions for Angular.js",
+				"links": [
+					{
+						"text": "Demo",
+						"url": "http://jennieji.github.io/angular-checkgroup",
+						"altText": "demo of angular-checkgroup"
+					}, {
+						"text": "Source Code",
+						"url": "https://github.com/JennieJi/angular-checkgroup",
+						"altText": "source code of angular-checkgroup"
+					}
+				]
+			}
+		]
+	}, {
 		"groupTitle": "jQuery Plugins",
 		"groupItems": [
 			{
