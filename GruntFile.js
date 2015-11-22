@@ -48,6 +48,17 @@ module.exports = function(grunt) {
         devDependencies: false
       }
     },
+    uglify: {
+      compile: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.jsSrc %>',
+          src: ['*.js'],
+          dest: '<%= paths.jsDist%>',
+          ext: '.js'
+        }]
+      }
+    },
     sass: {
       compile: {
         options: {
@@ -149,6 +160,7 @@ module.exports = function(grunt) {
     'wiredep',
     'sass',
     'jade', 
+    'imagemin',
     'useminPrepare', 
     'concat',
     'uglify',

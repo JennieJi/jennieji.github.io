@@ -1,0 +1,82 @@
+.page-home {
+	.me {
+		padding: 2em;
+		color: $white;
+		text-align: left;
+	}
+	.avatar-wrapper {
+		float: left;
+		width: 100px;
+		margin-right: 1em;
+
+		.avatar {
+			width: 100%;
+			height: 0;
+			padding-top: 100%;
+			border-radius: 100%;
+			border: 1px solid $black;
+			background-size: cover;
+		}
+	}
+	.name {
+		font-size: 1.75em;
+	}
+	nav {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+}
+
+.home-nav {
+	text-align: center;
+	text-transform: uppercase;
+
+	.icon {
+		width: 24px;
+		height: 24px;
+		line-height: 24px;
+		margin-right: 0.5em;
+		border-radius: 100%;
+		color: $black;
+		vertical-align: middle;
+		background: $white;
+		transition: all 800ms ease-in-out;
+	}
+	a {
+		float: left;
+		color: $white;
+		opacity: 0.8;
+		transition: all 800ms ease-in-out;
+
+		&:hover {
+			opacity: 1;
+
+			.fa-linkedin {
+				background: #0077B5;
+			}
+			.fa-weibo {
+				color: $white;
+				background: #e92e00;
+			}
+			.fa-github {
+				color: $white;
+				background: $black;
+			}
+		}
+	}
+	li {
+		padding: 0.5em 1em;
+
+		@include breakpoint(medium) {
+			display: inline-block;
+			margin: $grid-column-gutter 0;
+			padding: 0 $grid-column-gutter;
+
+			+ li {
+				border-left: 1px solid rgba(255,255,255,0.3);
+			}
+		}
+	}
+}
