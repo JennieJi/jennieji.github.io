@@ -1,77 +1,162 @@
 module.exports = function(grunt) {
+  require('load-grunt-tasks')(grunt);
 
-  // Project configuration.
+  var paths = {
+    src: 'src',
+    dist: 'dist',
+    imgSrc: 'src/img',
+    imgDist: 'dist/img',
+    scss: 'src/scss',
+    css: 'dist/css',
+    views: 'src/views',
+    jsSrc: 'src/js',
+    jsDist: 'dist/js',
+    bower: 'bower_components'
+  };
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    paths: {
-    	less: 'theme/less',
-    	css: 'theme/css',
-    	js: 'js',
-      bower: 'bower_components'
-    },
-    less: {
-      prod: {
-        options: {
-          cleancss: true,
-          compress: true
-        },
-        files: {
-          '<%= paths.css %>/bootstrap.min.css': '<%= paths.less %>/bootstrap/bootstrap.less',
-          '<%= paths.css %>/app.min.css': '<%= paths.less %>/app.less'
-        }
+    paths: paths,
+    eslint: {
+      options: {
+        quiet: true
       },
-      dev: {
-        files: {
-          '<%= paths.css %>/bootstrap.css': '<%= paths.less %>/bootstrap/bootstrap.less',
-          '<%= paths.css %>/app.css': '<%= paths.less %>/app.less'
-        }
+      target: ['<%= paths.jsSrc %>/*.js']
+    },
+    jade: {
+      compile: {
+        options: {
+          client: false,
+          pretty: true
+        },
+        files: [{
+          cwd: '<%= paths.views %>',
+          src: '{*/,}*.jade',
+          dest: '<%= paths.dist %>',
+          expand: true,
+          ext: '.html'
+        }]
       }
     },
-    concat: {
-      dev: {
-        options: {
-          banner: '/*!\n * <%= pkg.name %> combined client side JS\n * @licence <%= pkg.name %> - v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)\n * http://jennieji.github.io | Licence: MIT\n */\n'
-        },
+    wiredep: {
+      target: {
         src: [
-          '<%= paths.bower %>/angular/angular.js',
-          '<%= paths.bower %>/jquery/jquery.min.js',
-          '<%= paths.js %>/*/**/*.js'
+          '<%= paths.src %>/**/*.jade',
+          '<%= paths.scss %>/*.scss'
         ],
-        dest: '<%= paths.js %>/app.js'
+        dependencies: true,
+        devDependencies: false
       }
     },
-    uglify: {
-      prod: {
+    sass: {
+      compile: {
         options: {
-          banner: '/*!\n * <%= pkg.name %> compressed client side JS\n * @licence <%= pkg.name %> - v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)\n * http://jennieji.github.io | Licence: MIT\n */\n'
+          style: 'compressed',
+          compass: true
         },
-        files: {
-        	'<%= paths.js %>/app.min.js': '<%= concat.dev.dest %>'
+        files: [{
+          expand: true,
+          cwd: '<%= paths.scss %>',
+          src: ['*.scss'],
+          dest: '<%= paths.css %>',
+          ext: '.css'
+        }]
+      }
+    },
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= paths.dist %>',
+          src: ['{*/,}*.html'],
+          dest: '<%= paths.dist %>'
+        }]
+      }
+    },
+    imagemin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.imgSrc %>',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: '<%= paths.imgDist %>'
+        }]
+      }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 3000,
+          base: '<%= paths.dist %>',
+          debug: true,
+          livereload: true
         }
       }
+    },
+    useminPrepare: {
+      html: '<%= paths.dist %>/{*/,}*.html'
+    },
+    usemin: {
+      html: '<%= paths.dist %>/{*/,}*.html'
     },
     watch: {
-  		js: {
-  			files: ['<%= concat.dev.src %>'],
-        tasks: ['concat', 'uglify']
-  		},
-      less: {
-        files: [
-          '<%= paths.less %>/**/*.less'
+      scripts: {
+        files: ['<%= paths.jsSrc %>/{*/,}*.js'],
+        tasks: ['eslint', 'concat', 'uglify'],
+        options: {
+          liveReload: true
+        }
+      },
+      styles: {
+        files: ['<%= paths.scss %>/{*/,}*.scss'],
+        tasks: ['sass'],
+        options: {
+          liveReload: true
+        }
+      },
+      jade: {
+        files: ['<%= paths.src %>/{*/,}*.jade'],
+        tasks: [
+          'jade',
+          'useminPrepare',
+          'concat',
+          'uglify',
+          'cssmin',
+          // 'filerev',
+          'usemin',
+          'htmlmin'
         ],
-        tasks: ['less:dev']
+        options: {
+          liveReload: true
+        }
+      },
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep', 'jade']
+      },
+      images: {
+        files: ['<%= paths.imgSrc %>/**/*.{png,jpg,gif}'],
+        tasks: ['imagemin']
       }
   	}
   });
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  // Default task(s).
-  grunt.registerTask('default', ['concat', 'uglify', 'less', 'watch']);
-  grunt.registerTask('product', ['uglify', 'less:prod']);
-  grunt.registerTask('dev', ['concat', 'less:dev']);
-
+  grunt.registerTask('default', [
+    'wiredep',
+    'sass',
+    'jade', 
+    'useminPrepare', 
+    'concat',
+    'uglify',
+    'cssmin',
+    // 'filerev',
+    'usemin',
+    'htmlmin',
+    'connect', 
+    'watch'
+  ]);
 };
