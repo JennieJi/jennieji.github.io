@@ -101,7 +101,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          port: 3000,
+          port: 4800,
           base: '<%= paths.dist %>',
           debug: true,
           livereload: true
